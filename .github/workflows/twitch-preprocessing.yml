@@ -1,0 +1,48 @@
+name: Twitch Preprocessing Automation
+
+on:
+  workflow_dispatch:
+
+jobs:
+  run-automation:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+          cache-dependency-path: requirements.txt
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run preprocessing automation script
+        run: python "preprocessing/automate_Muhammad Suzaki Zahran.py"
+
+      - name: Upload EDA outputs
+        uses: actions/upload-artifact@v4
+        with:
+          name: eda-outputs
+          path: preprocessing/eda outputs/
+          if-no-files-found: error
+
+      - name: Upload preprocessed datasets
+        uses: actions/upload-artifact@v4
+        with:
+          name: preprocessed-data
+          path: preprocessing/preprocessed data/
+          if-no-files-found: error
+
+      - name: Upload raw dataset snapshot
+        uses: actions/upload-artifact@v4
+        with:
+          name: raw-data
+          path: twitch_streams_raw_data.csv
+          if-no-files-found: error
