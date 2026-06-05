@@ -24,20 +24,20 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run preprocessing automation script
-        run: python "preprocessing/automate_Muhammad Suzaki Zahran.py"
+        run: python "automate_Muhammad Suzaki Zahran.py"
 
       - name: Upload EDA outputs
         uses: actions/upload-artifact@v4
         with:
           name: eda-outputs
-          path: preprocessing/eda outputs/
+          path: eda outputs/
           if-no-files-found: error
 
       - name: Upload preprocessed datasets
         uses: actions/upload-artifact@v4
         with:
           name: preprocessed-data
-          path: preprocessing/preprocessed data/
+          path: preprocessed data/
           if-no-files-found: error
 
       - name: Upload raw dataset snapshot

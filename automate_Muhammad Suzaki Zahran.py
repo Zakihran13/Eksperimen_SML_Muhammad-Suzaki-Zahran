@@ -17,7 +17,7 @@ from wordcloud import WordCloud
 
 
 BASE_DIR = Path(__file__).resolve().parent
-PROJECT_DIR = BASE_DIR.parent
+PROJECT_DIR = BASE_DIR
 RAW_DATA_PATH = PROJECT_DIR / "twitch_streams_raw_data.csv"
 EDA_DIR = BASE_DIR / "eda outputs"
 PREPROCESSED_DIR = BASE_DIR / "preprocessed data"
