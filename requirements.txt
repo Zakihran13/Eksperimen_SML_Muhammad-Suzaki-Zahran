@@ -1,0 +1,9 @@
+datasets
+emoji
+matplotlib
+numpy
+pandas
+scikit-learn
+seaborn
+textblob
+wordcloud
